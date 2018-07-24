@@ -11,27 +11,6 @@ end_date = datetime.datetime.now() - timedelta(days=0)
 start_date = end_date - timedelta(days=1)
 
 BACK_TRACK_DATE = end_date - timedelta(days=30)
-
-def check_if_highest(stock_id, START_DATE, END_DATE):
-    list_price_high = []
-    stock_close = 0
-    num_of_trade_days = 0
-    p = get_price(stock_id, START_DATE, END_DATE, frequency = "1d", fields=['high','close'], adjust_type='none')
-    if not p is None and not p.empty:
-        num_of_trade_days = p.iloc[:,0].size - 1  
-        i = 0
-        while i < num_of_trade_days:
-            list_price_high.append(p['high'][i])
-            i = i + 1
-        stock_close = p['close'][i]
-            
-        max_price = max(list_price_high)
-    
-        if(max_price < stock_close):
-            return [max_price, stock_close]
-        else: return False    
-    
-    
     
 def main():
 
@@ -101,6 +80,7 @@ def avg_volume(stock_id):
                     return (sum - p2['volume'][b])/(count2-1)  
     else: return 0
 
+    
 def count_time(stock_id, high, start_index):
     count = 0 
     p3 = get_price(stock_id, start_date, twenty_after_end_date, frequency = "1d", fields=['high','volume'], adjust_type='none')
@@ -111,6 +91,27 @@ def count_time(stock_id, high, start_index):
                 count = count + 1
         k = k + 1
     return count
+
+
+def check_if_highest(stock_id, START_DATE, END_DATE):
+    list_price_high = []
+    stock_close = 0
+    num_of_trade_days = 0
+    p = get_price(stock_id, START_DATE, END_DATE, frequency = "1d", fields=['high','close'], adjust_type='none')
+    if not p is None and not p.empty:
+        num_of_trade_days = p.iloc[:,0].size - 1  
+        i = 0
+        while i < num_of_trade_days:
+            list_price_high.append(p['high'][i])
+            i = i + 1
+        stock_close = p['close'][i]
+            
+        max_price = max(list_price_high)
+    
+        if(max_price < stock_close):
+            return [max_price, stock_close]
+        else: return False    
+
 
 
 if __name__ == "__main__":
