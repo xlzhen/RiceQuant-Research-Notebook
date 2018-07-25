@@ -1,3 +1,7 @@
+'''
+find all stocks at day i have highest price in past n days
+'''
+
 import numpy as np
 import pandas as pd
 from pandas import Series, DataFrame
