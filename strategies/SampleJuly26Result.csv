@@ -1,0 +1,12 @@
+,股票代码,是否超过,最高价,最低价,MACD
+0,603393.XSHG,False,,,
+1,600540.XSHG,False,,,
+2,000017.XSHE,False,,,
+3,000716.XSHE,False,,,
+4,002721.XSHE,True,8.99,9.11,
+5,002590.XSHE,True,8.53,9.26,无
+6,600681.XSHG,True,13.73,13.78,无
+7,002357.XSHE,False,,,
+8,300238.XSHE,False,,,
+9,300746.XSHE,False,,,
+10,600880.XSHG,False,,,
